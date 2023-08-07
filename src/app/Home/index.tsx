@@ -1,4 +1,4 @@
-import { Button, CircularProgress, IconButton, Toolbar, Typography } from "@mui/material";
+import { Button, CircularProgress, Toolbar, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { AppBar, } from "@src/common-components";
 import * as styles from "./styles";
@@ -50,7 +50,6 @@ const Home = () => {
           <ul>
             <h1>History:</h1>
             {history?.map((city, index) => {
-              console.log(city)
               return (
                 <li key={index} style={{ marginBottom: '10px' }} onClick={() => setData([city])}>
                   <h3>{city?.name ?? city?.data?.name}</h3>
@@ -62,7 +61,6 @@ const Home = () => {
           <ul>
             <h1>Data From Search:</h1>
             {data.map((city, index) => {
-              console.log(city)
               return(
                 <li key={index}>
                   <h3>{city?.name}</h3>
@@ -74,7 +72,6 @@ const Home = () => {
         </div>
 
       </div>
-
     </div>
   );
 };

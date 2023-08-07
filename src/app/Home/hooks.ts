@@ -7,15 +7,14 @@ type FormValues = {
 };
 
 const useHome = () => {
-  const [history, setHistory] = useState([]);
-  const [data, setData] = useState([]);
+  const [history, setHistory] = useState<any[]>([]);
+  const [data, setData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchHistory = async () => {
       const { data } = await axios.get(`http://localhost:8000/get-history`);
 
-      console.log(data.data);
       setHistory(data.data);
     };
 
@@ -43,7 +42,7 @@ const useHome = () => {
         })
       );
 
-      setHistory([...data, ...history]);
+      setHistory([...history, ...data].slice(-10));
       setData(data);
       setIsLoading(false);
     } catch (error) {
