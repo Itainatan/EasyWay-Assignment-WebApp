@@ -14,8 +14,9 @@ const useHome = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       const { data } = await axios.get(`http://localhost:8000/get-history`);
+
+      console.log(data.data);
       setHistory(data.data);
-      console.log(data.data)
     };
 
     fetchHistory();
@@ -34,9 +35,12 @@ const useHome = () => {
       const cities = search.split(",");
 
       const data: any = await Promise.all(
-        cities.map((city) =>
-          axios.get(`http://localhost:8000/get-weather/${city}`)
-        )
+        cities.map(async (city) => {
+          const cityData = await axios.get(
+            `http://localhost:8000/get-weather/${city}`
+          );
+          return cityData.data;
+        })
       );
 
       setHistory([...data, ...history]);

@@ -49,21 +49,27 @@ const Home = () => {
         <div css={styles.dataContainer}>
           <ul>
             <h1>History:</h1>
-            {history?.map((city, index) => (
-              <li key={index} style={{ marginBottom: '10px' }} onClick={() => setData([city.data])}>
-                <h3>{city?.name ?? city?.data?.name}</h3>
-              </li>
-            ))}
+            {history?.map((city, index) => {
+              console.log(city)
+              return (
+                <li key={index} style={{ marginBottom: '10px' }} onClick={() => setData([city])}>
+                  <h3>{city?.name ?? city?.data?.name}</h3>
+                </li>
+              )
+            })}
           </ul>
 
           <ul>
             <h1>Data From Search:</h1>
-            {data.map((city, index) => (
-              <li key={index}>
-                <h3 style={{margin: 0}}>{city?.data?.name}</h3>
-                <h4 style={{margin: 0}}>current weather - {city?.data?.data?.current?.cloud}</h4>
-              </li>
-            ))}
+            {data.map((city, index) => {
+              console.log(city)
+              return(
+                <li key={index}>
+                  <h3>{city?.name}</h3>
+                  <h4>current weather - {city?.data?.current?.cloud}</h4>
+                </li>
+              )
+            })}
           </ul>
         </div>
 
