@@ -2,18 +2,26 @@ import { css } from "@emotion/react";
 
 export const container = css`
   background-color: #eef2f6;
-  color: #6a806c;
+  color: #000;
   font-family: Roboto, sans-serif;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-flow: row wrap;
   direction: ltr;
+
+  .h3, h4 {
+    margin: 0;
+  }
+
+  ul {
+    padding: 0
+  }
 `;
 
 export const card = css`
   display: flex;
-  flex-direction: "column";
+  flex-direction: column;
   margin-top: 10vh;
   padding: 50px;
 `;
@@ -63,4 +71,9 @@ export const loading = css`
   &.MuiCircularProgress-root {
     color: ##6a806c;
   }
+`;
+
+export const dataContainer = css`
+  display: flex;
+  column-gap: 100px;
 `;
